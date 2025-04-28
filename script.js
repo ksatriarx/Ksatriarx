@@ -9,7 +9,7 @@ const movies = [
     "description": "Seorang penyelam yang terjebak di dasar laut tanpa oksigen harus berjuang untuk bertahan hidup melawan waktu dan ketakutan terbesar dalam hidupnya.",
     "trailer": "https://files.catbox.moe/3laeli.mp4",
     "video": "https://cdn1.turboviplay.com/data1/6809d3b125bc5/6809d3b125bc5.m3u8",
-    "poster": "https://i.postimg.cc/pTPkG1sJ/MV5-BYm-Nj-MDg1-Y2-Et-Nm-Zi-OS00-NGUz-LThj-ZGYt-Nz-U2-OGI5-M2-Vk-MDFh-Xk-Ey-Xk-Fqc-Gc-V1.jpg"
+    "poster": "https://i.postimg.cc/gjyX0R1z/MV5-BYm-Nj-MDg1-Y2-Et-Nm-Zi-OS00-NGUz-LThj-ZGYt-Nz-U2-OGI5-M2-Vk-MDFh-Xk-Ey-Xk-Fqc-Gc-V1.jpg"
   },
   {
     "title": "Freaky Tales (2025)",
