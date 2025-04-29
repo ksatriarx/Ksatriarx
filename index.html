@@ -7,10 +7,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/node-vibrant/3.2.0/vibrant.min.js"></script>
   <link rel="stylesheet" href="style.css">
-  <style>
-  
-  </style>
 </head>
 <body>
   <div class="site-title">KsatriaRx</div>
@@ -19,8 +17,8 @@
     <video id="intro-video" autoplay loop playsinline></video>
     <div class="poster-overlay" id="poster-overlay"></div>
     <div class="floating-controls">
-      <input type="text" placeholder="Cari film...">
-      <select>
+      <input type="text" id="searchInput" placeholder="Cari film..."> 
+      <select id="Genreselect">
         <option value="">Semua Genre</option>
         <option value="action">Action</option>
         <option value="thriller">Thriller</option>
@@ -37,7 +35,6 @@
           <button id="play-btn">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Play
           </button>
-          
           <button>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 01-2-2V7h2v12h14V7h2v12a2 2 0 01-2 2zM12 2l4 4h-3v8h-2V6H8l4-4z"/></svg>
             Watch Later
@@ -54,15 +51,9 @@
   
   <div id="movie-grid" class="grid-box"></div>
 
-  <!-- Modal untuk Video -->
-  <div id="video-modal" style="display: none;">
-    <div class="modal-content">
-      <video id="modal-video" controls></video>
-      <button id="close-modal-btn">X</button>
-      <div id="Ep-buttons" style="display: flex; flex-wrap: wrap; gap: 5px;"></div>
-    </div>
+  <div id="video-modal">
+    <video id="modal-video" controls autoplay></video>
   </div>
-
   <!-- Link ke script.js -->
   <script src="script.js"></script>
 </body>
