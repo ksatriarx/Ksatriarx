@@ -1,5 +1,24 @@
 const movies = [
   {
+  title: "Resident Playbook",
+  genre: "Drama, Medical",
+  rating: "★ 8.9",
+  year: "2025",
+  duration: "6 eps",
+  type: "Series",
+  description: "Kehidupan para residen muda di rumah sakit penuh tantangan, dilema etika, dan ikatan persahabatan yang menguatkan.",
+  trailer: "https://files.catbox.moe/dcrfaj.mp4",
+  poster: "https://i.ibb.co.com/FLkSZqz4/images-2.jpg",
+  Eps: [
+    "https://cdn.turboviplay.com/data1/67fb1c027e264/67fb1c027e264.m3u8",
+    "https://cdn.turboviplay.com/data1/67fc8bfa631f6/67fc8bfa631f6.m3u8",
+    "https://cdn.turboviplay.com/data1/68048b38692d3/68048b38692d3.m3u8",
+    "https://cdn.turboviplay.com/data1/6805a0f323dcb/6805a0f323dcb.m3u8",
+    "https://cdn.turboviplay.com/data1/680d9a5692298/680d9a5692298.m3u8",
+    "https://cdn.turboviplay.com/data1/680ee2768cd22/680ee2768cd22.m3u8"
+  ]
+},
+  {
   title: "YAIBA: Samurai Legend",
   genre: "Action, Samurai, Fantasy",
   rating: "★ 8.7",
@@ -98,6 +117,29 @@ const movies = [
       ]
     },
     {
+  title: "Study Group",
+  genre: "Action, School, Drama",
+  rating: "★ 9.0",
+  year: "2025",
+  duration: "12 eps",
+  type: "Series",
+  description: "Gamin, siswa cerdas di sekolah brutal, membentuk kelompok belajar demi bertahan hidup dan mencapai impiannya.",
+  trailer: "https://files.catbox.moe/ya3lh5.mp4",
+  poster: "https://i.ibb.co.com/mC14pmyf/images-3.jpg",
+  Eps: [
+    "https://be6721.rcr72.waw04.cdn255.com/hls2/01/08114/c4fz4scj0zf7_x/master.m3u8?t=Bdmps_ihsNAmOrUD1ZTvj5Jj0AvylzEbrAaz19DBQs4&s=1745983478&e=10800&f=40574193&srv=36&asn=45146&sp=5500&p=",
+    "https://be6721.rcr72.waw04.cdn255.com/hls2/01/08114/gweasg25sxdl_x/master.m3u8?t=BWAeofoBLfOuhLLbVXM5oPFCNd9oCqOnYAca2si_fBY&s=1745983578&e=10800&f=40574659&srv=50&asn=45146&sp=5500&p=",
+    "https://cdn.turboviplay.com/data1/679c5b6210256/679c5b6210256.m3u8",
+    "https://cdn.turboviplay.com/data1/679c600e8fa4e/679c600e8fa4e.m3u8",
+    "https://cdn.turboviplay.com/data1/67a57ae8e861d/67a57ae8e861d.m3u8",
+    "https://cdn.turboviplay.com/data1/67a57fa033a9f/67a57fa033a9f.m3u8",
+    "https://cdn.turboviplay.com/data1/67af238a80499/67af238a80499.m3u8",
+    "https://cdn.turboviplay.com/data1/67af29688ac48/67af29688ac48.m3u8",
+    "https://cdn.turboviplay.com/data1/67b7eb3222145/67b7eb3222145.m3u8",
+    "https://cdn.turboviplay.com/data1/67b7efe0a1b2b/67b7efe0a1b2b.m3u8"
+  ]
+},
+    {
       title: "Locked ",
       genre: "Thriller",
       rating: "★ 8.9",
@@ -138,6 +180,7 @@ const descEl = document.getElementById("film-desc");
 const EpButtons = document.getElementById("Ep-buttons");
 
 let currentFilm = movies[0];
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
 // ===== FUNGSI UTAMA ===== //
 function renderMovies(moviesToShow) {
@@ -159,46 +202,44 @@ function renderMovies(moviesToShow) {
 }
 
 function loadFilm(film) {
+  // Hentikan semua video
+  introVideo.pause();
+  introVideo.currentTime = 0;
+  modalVideo.pause();
+  modalVideo.currentTime = 0;
+
+  // Set poster dan trailer
   overlay.style.backgroundImage = `url('${film.poster}')`;
   overlay.style.opacity = 1;
-  introVideo.pause();
+  
   introVideo.src = film.trailer;
   introVideo.load();
+
   introVideo.oncanplay = () => {
     overlay.style.opacity = 0;
-    introVideo.play();
-    introVideo.muted = false;
+    introVideo.play()
+      .then(() => introVideo.muted = false)
+      .catch(e => {
+        console.log("Autoplay diblokir, menggunakan muted");
+        introVideo.muted = true;
+        introVideo.play();
+      });
   };
+
+  // Update info film
   genreEl.textContent = film.genre;
   titleEl.textContent = film.title;
   metaEl.textContent = `${film.rating} · ${film.year} · ${film.duration} · ${film.type}`;
   descEl.textContent = film.description;
   
+  // Handle episode buttons
   EpButtons.innerHTML = '';
-  if (film.Eps && film.Eps.length > 0) {
-    film.Eps.forEach((Ep, index) => {
-      const button = document.createElement('button');
-      button.innerText = `Ep ${index + 1}`;
-      button.onclick = () => {
-        if (Hls.isSupported()) {
-          const hls = new Hls();
-          hls.loadSource(Ep);
-          hls.attachMedia(modalVideo);
-          hls.on(Hls.Events.MANIFEST_PARSED, () => {
-            modal.style.display = "flex";
-            modalVideo.play();
-            requestFullscreen(modalVideo);
-          });
-        } else if (modalVideo.canPlayType('application/vnd.apple.mpegurl')) {
-          modalVideo.src = Ep;
-          modal.style.display = "flex";
-          modalVideo.play();
-          requestFullscreen(modalVideo);
-        } else {
-          alert("Browser kamu tidak mendukung pemutaran .m3u8");
-        }
-      };
-      EpButtons.appendChild(button);
+  if (film.Eps) {
+    film.Eps.forEach((ep, i) => {
+      const btn = document.createElement('button');
+      btn.textContent = `Ep ${i+1}`;
+      btn.onclick = () => playVideo(ep);
+      EpButtons.appendChild(btn);
     });
   }
   currentFilm = film;
@@ -239,95 +280,143 @@ function closeModal() {
   modal.style.display = "none";
   modalVideo.pause();
   modalVideo.currentTime = 0;
-  document.exitFullscreen();
-  window.history.back();
+  
+  // Exit fullscreen safely
+  if (document.fullscreenElement) {
+    document.exitFullscreen().catch(e => console.log("Fullscreen exit error:", e));
+  }
+  
+  // Push new state to prevent back navigation
+  history.pushState({ modalClosed: true }, "");
 }
 
 function openVideoModal() {
-  modal.style.display = "flex";
-  modalVideo.play();
-  requestFullscreen(modalVideo);
+  // Stop intro video completely
   introVideo.pause();
-  window.history.pushState({ modalOpen: true }, "");
-}
-
-// ===== SPLASH SCREEN ===== 
-function initSplashScreen() {
-  const splashScreen = document.getElementById('splash-screen');
-  const skipBtn = document.getElementById('skip-splash');
+  introVideo.currentTime = 0;
+  introVideo.removeAttribute('src');
   
-  if (!splashScreen) return;
-
-  let countdown = 3;
-  let splashTimeout;
-
-  // Update tombol skip
-  const updateSkipButton = () => {
-    if (countdown > 0) {
-      skipBtn.innerHTML = `Skip (${countdown})`;
-      countdown--;
-      setTimeout(updateSkipButton, 1000);
-    } else {
-      skipBtn.innerHTML = 'Skip';
-    }
-  };
-
-  // Auto close setelah 3 detik
-  const autoCloseSplash = () => {
-    splashScreen.classList.add('fade-out');
-    setTimeout(() => splashScreen.remove(), 500);
-  };
-
-  // Skip manual
-  skipBtn.addEventListener('click', () => {
-    clearTimeout(splashTimeout);
-    autoCloseSplash();
-  });
-
-  // Mulai countdown
-  updateSkipButton();
-  splashTimeout = setTimeout(autoCloseSplash, 3000);
-
-  // Optional: Sound effect
-  try {
-    const splashAudio = new Audio('splash-sound.mp3');
-    splashAudio.volume = 0.3;
-    splashAudio.play().catch(e => console.log("Audio error:", e));
-  } catch (e) {
-    console.log("Error loading audio:", e);
+  // Show modal
+  modal.style.display = "flex";
+  
+  // Handle mobile differently
+  if (isMobile) {
+    modalVideo.setAttribute('controls', ''); // Aktifkan kontrol native
+    modalVideo.setAttribute('playsinline', '');
+    modalVideo.setAttribute('webkit-playsinline', '');
+    modalVideo.play().catch(e => {
+      console.log("Mobile play error:", e);
+      modalVideo.muted = true;
+      modalVideo.play();
+    });
+  } else {
+    // Desktop behavior
+    modalVideo.requestFullscreen().then(() => {
+      modalVideo.play();
+    }).catch(e => {
+      console.log("Fullscreen error:", e);
+      modalVideo.play();
+    });
   }
+  
+  // Add history state
+  history.pushState({ modalOpen: true }, "");
 }
 
-// ===== EVENT LISTENERS ===== 
+// ===== EVENT HANDLERS ===== 
+function setupEventListeners() {
+  // Search and filter
+  searchInput.addEventListener("input", () => applyFilters());
+  genreSelect.addEventListener("change", () => applyFilters());
+  
+  // Play button
+  playButton.onclick = () => {
+    const videoSource = currentFilm.video || (currentFilm.Eps && currentFilm.Eps[0]);
+    if (videoSource) playVideo(videoSource);
+    else alert("Video tidak tersedia");
+  };
+  
+  // Modal close
+  const closeBtn = document.getElementById('close-modal');
+  closeBtn.addEventListener('click', closeModal);
+  closeBtn.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    closeModal();
+  });
+  
+  // Handle back button
+  window.addEventListener('popstate', (e) => {
+    if (modal.style.display === "flex") {
+      e.preventDefault();
+      closeModal();
+      // Add new state to prevent exiting
+      setTimeout(() => history.pushState({ modalPreventExit: true }, ""), 10);
+    }
+  });
+  
+  // Prevent exit during playback
+  window.addEventListener('beforeunload', (e) => {
+    if (modal.style.display === "flex") {
+      e.preventDefault();
+      return "Anda sedang menonton video. Yakin ingin keluar?";
+    }
+  });
+}
+
 searchInput.addEventListener("input", () => applyFilters());
 genreSelect.addEventListener("change", () => applyFilters());
+
+// 🔥 Kode baru untuk tombol play di sini! 🔥
 playButton.onclick = () => {
-  if (Hls.isSupported()) {
-    const hls = new Hls();
-    hls.loadSource(currentFilm.video);
-    hls.attachMedia(modalVideo);
-    hls.on(Hls.Events.MANIFEST_PARSED, openVideoModal);
-  } else if (modalVideo.canPlayType('application/vnd.apple.mpegurl')) {
+  introVideo.pause();
+  introVideo.currentTime = 0;
+
+  const videoSource = currentFilm.video || (currentFilm.Eps && currentFilm.Eps[0]);
+  
+  if (!videoSource) {
+    alert("Video tidak tersedia");
+    return;
+  }
+
+  if (videoSource.endsWith('.mp4')) {
+    modalVideo.src = videoSource;
+    modalVideo.type = 'video/mp4';
     openVideoModal();
-    modalVideo.src = currentFilm.video;
-  } else {
-    alert("Browser kamu tidak mendukung pemutaran .m3u8");
+  }
+  else if (videoSource.endsWith('.m3u8')) {
+    if (Hls.isSupported()) {
+      const hls = new Hls();
+      hls.loadSource(videoSource);
+      hls.attachMedia(modalVideo);
+      hls.on(Hls.Events.MANIFEST_PARSED, openVideoModal);
+    } else if (modalVideo.canPlayType('application/vnd.apple.mpegurl')) {
+      modalVideo.src = videoSource;
+      openVideoModal();
+    } else {
+      alert("Browser tidak mendukung format HLS (.m3u8)");
+    }
+  }
+  else {
+    alert("Format video tidak valid");
   }
 };
 
-document.getElementById("close-modal").addEventListener("click", closeModal);
-window.addEventListener("popstate", (e) => {
+// Tutup modal
+document.getElementById('close-modal').addEventListener('click', closeModal);
+document.getElementById('close-modal').addEventListener('touchend', closeModal);
+
+window.addEventListener('beforeunload', (e) => {
+  if (modal.style.display === "flex") {
+    e.preventDefault();
+    return "Anda sedang menonton video. Yakin ingin keluar?";
+  }
+});
+// Handle back button mobile
+window.addEventListener('popstate', (e) => {
   if (modal.style.display === "flex") {
     e.preventDefault();
     closeModal();
   }
-});
-
-// ===== INISIALISASI ===== 
-window.addEventListener('DOMContentLoaded', () => {
-  renderMovies(movies);
-  loadFilm(currentFilm);
-  initSplashScreen(); // Jalankan splash screen
 });
 
 // Fungsi splash screen tanpa skip
@@ -347,6 +436,41 @@ function initSplashScreen() {
 
 // Panggil saat halaman load
 window.addEventListener('DOMContentLoaded', () => {
+  renderMovies(movies);
+  loadFilm(currentFilm);
+  setupEventListeners();
   initSplashScreen();
-  // ... kode lainnya ...
 });
+// yang bikin mp4 berjalan
+function playVideo(source) {
+  // Hentikan intro video sepenuhnya
+  introVideo.pause();
+  introVideo.currentTime = 0;
+  introVideo.src = "";
+  
+  // Reset modal video
+  modalVideo.pause();
+  modalVideo.currentTime = 0;
+  modalVideo.src = "";
+
+  if (source.endsWith('.mp4')) {
+    modalVideo.src = source;
+    modalVideo.type = 'video/mp4';
+  } else {
+    if (Hls.isSupported()) {
+      const hls = new Hls();
+      hls.loadSource(source);
+      hls.attachMedia(modalVideo);
+    } else if (modalVideo.canPlayType('application/vnd.apple.mpegurl')) {
+      modalVideo.src = source;
+    }
+  }
+
+  modal.style.display = "flex";
+  modalVideo.play()
+    .catch(e => {
+      console.log("Autoplay diblokir, menggunakan muted");
+      modalVideo.muted = true;
+      modalVideo.play();
+    });
+}
