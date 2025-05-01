@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
   <title>KsatriaRx</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
@@ -14,7 +17,7 @@
   <div class="site-title">KsatriaRx</div>
 
   <div class="intro">
-    <video id="intro-video" autoplay loop playsinline></video>
+    <video id="intro-video" autoplay loop playsinline muted></video>
     <div class="poster-overlay" id="poster-overlay"></div>
     <div class="floating-controls">
       <input type="text" id="searchInput" placeholder="Cari film..."> 
@@ -51,17 +54,19 @@
   
   <div id="movie-grid" class="grid-box"></div>
 
-  <div id="video-modal">
-  <button id="close-modal" aria-label="Close">✕</button>
-  <video id="modal-video" controls autoplay></video>
+  <!-- Tambahkan atribut ini ke modal video -->
+<div id="video-modal" style="display:none;">
+  <button id="close-modal" aria-label="Close" ontouchstart="event.preventDefault()">✕</button>
+  <video id="modal-video" controls playsinline></video>
 </div>
-<div id="splash-screen">
-  <div class="splash-content">
-    <h1>KsatriaRx</h1>
-    <p>Your Ultimate Movie Experience</p>
+  
+  <div id="splash-screen">
+    <div class="splash-content">
+      <h1>KsatriaRx</h1>
+      <p>Your Ultimate Movie Experience</p>
+    </div>
   </div>
-</div>
-  <!-- Link ke script.js -->
+
   <script src="script.js"></script>
 </body>
-          </html>
+</html>
