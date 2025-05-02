@@ -1,5 +1,41 @@
 const movies = [
   {
+  "title": "Exterritorial",
+  "genre": "Action, Thriller",
+  "rating": "★ 7.4",
+  "year": "2025",
+  "duration": "109min",
+  "type": "Movie",
+  "description": "Sara, seorang mantan prajurit pasukan khusus, mengalami mimpi buruk terburuknya ketika putranya menghilang di dalam konsulat AS di Jerman.",
+  "trailer": "https://files.catbox.moe/pybl9a.mp4",
+  "video": "https://cdn1.turboviplay.com/data1/6812b81d6e8d4/6812b81d6e8d4.m3u8",
+  "poster": "https://i.postimg.cc/Jh6yNzYm/MV5-BYj-Vk-Mz-I2-Mj-At-Yz-A3-NC00-OGE1-LWEy-ZDMt-ODc0-YTc5-NTZj-Yz-Fi-Xk-Ey-Xk-Fqc-Gc-V1.jpg"
+},
+  {
+  "title": "Drop",
+  "genre": "Thriller, Drama",
+  "rating": "★ 7.8",
+  "year": "2025",
+  "duration": "1h 45m",
+  "type": "Movie",
+  "description": "Kencan pertama seorang ibu yang sudah lama menjanda berubah menjadi menakutkan ketika dia dibombardir dengan pesan ancaman.",
+  "trailer": "https://files.catbox.moe/ug88wn.mp4",
+  "poster": "https://i.postimg.cc/xCvxSSKf/images-5.jpg",
+  "video": "https://be2719.rcr22.ams01.cdn255.com/hls2/01/08881/norvshst4exk_x/master.m3u8?t=mfs4sHBRyMf-aJJnQcSNOmpBXMZoRZtoDTU63cfSfpQ&s=1746177638&e=10800&f=44406683&srv=18&asn=14061&sp=5500&p="
+},
+  {
+  "title": "Hitman 2",
+  "genre": "Action, Thriller",
+  "rating": "★ 8.7",
+  "year": "2025",
+  "duration": "1h 52m",
+  "type": "Movie",
+  "description": "Seorang pembunuh bayaran kembali dengan misi paling berbahaya yang bisa mengubah takdir dunia.",
+  "trailer": "https://files.catbox.moe/e06qe1.mp4",
+  "poster": "https://i.postimg.cc/cJV6YptN/images-4.jpg",
+  "video": "https://cdn.turboviplay.com/data1/681455b5c79f9/681455b5c79f9.m3u8"
+},
+  {
   title: "Resident Playbook",
   genre: "Drama, Medical",
   rating: "★ 8.9",
