@@ -79,7 +79,7 @@ body.modal-open {
       background: rgba(255, 255, 255, 0.2);
     }
     #movie-grid {
-      margin-top: 20px;
+      margin-top: 15px;
       padding-top: 10px;
       position: relative;
     }
@@ -99,7 +99,7 @@ body.modal-open {
       left: 0;
       width: 100%;
       background: rgba(0, 0, 0, 0.5);
-      padding: 0px 20px;
+      padding: 2px 10px;
       font-family: 'Bebas Neue', sans-serif;
       font-size: 24px;
       color: #e50914;
@@ -152,7 +152,7 @@ body.modal-open {
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 20px;
+  padding: 0px;
   background: linear-gradient(
     to top, 
     rgba(0,0,0,0.9) 0%, 
@@ -169,7 +169,7 @@ body.modal-open {
       content: "";
       position: absolute;
       top: 0;
-      left: 0;
+      left: 10px;
       width: 4px;
       height: 100%;
       background: #e50914;
@@ -385,4 +385,15 @@ body.modal-open {
 }
 .skip-btn:active {
   transform: scale(0.95);
+}
+/* ===== Area Konten Utama ===== */
+.content-container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 44px); /* Sesuaikan dengan tinggi header */
+}
+
+/* ===== Grid Film ===== */
+#movie-grid {
+  overflow-y: auto; /* Aktifkan scroll */
 }
