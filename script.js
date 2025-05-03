@@ -1,5 +1,17 @@
 const movies = [
   {
+  "title": "Heart Eyes",
+  "genre": "Horror, Thriller",
+  "rating": "★ 6.9",
+  "year": "2025",
+  "duration": "1h 35m",
+  "type": "Movie",
+  "description": "Seorang wanita dikejar oleh sosok bertopeng dengan 'mata hati' yang meneror kota, menyebabkan teror dan kekacauan setiap malam.",
+  "trailer": "https://files.catbox.moe/1z0gdw.mp4",
+  "poster": "https://i.postimg.cc/XqbK43Jk/images-7.jpg",
+  "video": "https://cdn1.turboviplay.com/data1/67f76b8ca1d14/67f76b8ca1d14.m3u8"
+},
+  {
   "title": "Death of a Unicorn",
   "genre": "Comedy, Fantasy, Horror, Thriller",
   "rating": "★ 6.3",
@@ -81,6 +93,7 @@ const movies = [
     "https://storages.animein.net/Shin%20Samurai-den%20Yaiba%2F2-720p-1744453022361.mp4",
     "https://storages.animein.net/Shin%20Samurai-den%20Yaiba%2F3-720p-1745057817698.mp4",
     "https://storages.animein.net/Shin%20Samurai-den%20Yaiba%2F4-720p-1745662342003.mp4"
+    "https://storages.animein.net/Shin%20Samurai-den%20Yaiba%2F5-720p-1746268893706.mp4"
   ]
 },
   {
