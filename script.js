@@ -92,7 +92,7 @@ const movies = [
     "https://storages.animein.net/Shin%20Samurai-den%20Yaiba%2F1-720p-1743847904940.mp4",
     "https://storages.animein.net/Shin%20Samurai-den%20Yaiba%2F2-720p-1744453022361.mp4",
     "https://storages.animein.net/Shin%20Samurai-den%20Yaiba%2F3-720p-1745057817698.mp4",
-    "https://storages.animein.net/Shin%20Samurai-den%20Yaiba%2F4-720p-1745662342003.mp4"
+    "https://storages.animein.net/Shin%20Samurai-den%20Yaiba%2F4-720p-1745662342003.mp4",
     "https://storages.animein.net/Shin%20Samurai-den%20Yaiba%2F5-720p-1746268893706.mp4"
   ]
 },
