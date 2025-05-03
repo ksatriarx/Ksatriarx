@@ -1,5 +1,17 @@
 const movies = [
   {
+  "title": "Death of a Unicorn",
+  "genre": "Comedy, Fantasy, Horror, Thriller",
+  "rating": "★ 6.3",
+  "year": "2025",
+  "duration": "107min",
+  "type": "Movie",
+  "description": "Seorang ayah dan putrinya secara tidak sengaja menabrak seekor unicorn saat menuju retret akhir pekan.",
+  "trailer": "https://files.catbox.moe/ygknt2.mp4",
+  "video": "https://cdn1.turboviplay.com/data1/68128fcd3842f/68128fcd3842f.m3u8",
+  "poster": "https://i.postimg.cc/FzSVmV2M/images-6.jpg"
+},
+  {
   "title": "Exterritorial",
   "genre": "Action, Thriller",
   "rating": "★ 7.4",
