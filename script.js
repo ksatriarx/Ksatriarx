@@ -9,7 +9,7 @@ const movies = [
   "description": "Seorang wanita dikejar oleh sosok bertopeng dengan 'mata hati' yang meneror kota, menyebabkan teror dan kekacauan setiap malam.",
   "trailer": "https://files.catbox.moe/1z0gdw.mp4",
   "poster": "https://i.postimg.cc/XqbK43Jk/images-7.jpg",
-  "video": "https://cdn1.turboviplay.com/data1/67f76b8ca1d14/67f76b8ca1d14.m3u8"
+  "video": "https://cdn1.turboviplay.com/data1/67f76b8ca1d14/67f76b8ca1d14.m3u8",
 },
   {
   "title": "Death of a Unicorn",
