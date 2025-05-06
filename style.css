@@ -15,16 +15,24 @@ body.modal-open {
 }
 
 #video-modal {
-  position: fixed;
+  display: none; /* Awalnya tersembunyi */
+  position: fixed; /* Posisi tetap di layar */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: #000;
-  z-index: 1000;
-  touch-action: manipulation; /* Penting untuk scroll di mobile */
+  background-color: rgba(0, 0, 0, 0.8); /* Latar belakang gelap */
+  z-index: 1000; /* Pastikan modal di atas elemen lain */
+  justify-content: center; /* Pusatkan horizontal */
+  align-items: center; /* Pusatkan vertikal */
 }
 
+/* Konten modal (video) */
+#modal-video {
+  max-width: 90%; /* Lebar maksimal */
+  max-height: 90vh; /* Tinggi maksimal */
+  background-color: #000; /* Latar belakang hitam */
+}
 #video-modal {
   touch-action: pan-y; /* Memungkinkan scroll vertikal di dalam modal */
 }
@@ -319,7 +327,6 @@ body.modal-open {
   opacity: 1;
   transition: opacity 0.5s ease;
 }
-
 #splash-screen.fade-out {
   opacity: 0;
 }
